@@ -10,7 +10,7 @@ Data Structures in Zig
 - [ ] Set
 - [ ] Multiset
 - [ ] BST
-- [ ] Union Find
+- [x] Union Find
 - [ ] [Pairing Heap](https://en.wikipedia.org/wiki/Pairing_heap)?
 
 ## References
