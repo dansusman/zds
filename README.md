@@ -18,3 +18,4 @@ Data Structures in Zig
 - https://ziglang.org/documentation/master/std
 - https://github.com/mitchellh/libxev/blob/main/src/heap.zig
 - https://en.wikipedia.org/wiki/Pairing_heap
+- https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
