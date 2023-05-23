@@ -32,43 +32,66 @@ inline fn edge(from: i32, to: i32, weight: i32) uf.Edge {
     };
 }
 
-fn initialize_edges() []uf.Edge {
-    var edges: [11]uf.Edge = undefined;
-    edges[0] = edge(0, 1, 7);
-    edges[1] = edge(0, 3, 5);
-    edges[2] = edge(1, 2, 8);
-    edges[3] = edge(1, 4, 7);
-    edges[4] = edge(1, 3, 9);
-    edges[5] = edge(2, 4, 5);
-    edges[6] = edge(3, 4, 15);
-    edges[7] = edge(3, 5, 6);
-    edges[8] = edge(4, 5, 8);
-    edges[9] = edge(4, 6, 9);
-    edges[10] = edge(5, 6, 11);
+// fn initialize_edges() []uf.Edge {
+//     var edges: [11]uf.Edge = undefined;
+//     edges[0] = edge(0, 1, 7);
+//     edges[1] = edge(0, 3, 5);
+//     edges[2] = edge(1, 2, 8);
+//     edges[3] = edge(1, 4, 7);
+//     edges[4] = edge(1, 3, 9);
+//     edges[5] = edge(2, 4, 5);
+//     edges[6] = edge(3, 4, 15);
+//     edges[7] = edge(3, 5, 6);
+//     edges[8] = edge(4, 5, 8);
+//     edges[9] = edge(4, 6, 9);
+//     edges[10] = edge(5, 6, 11);
+//
+//     return &edges;
+// }
 
-    return &edges;
-}
+const edges = [11]uf.Edge{
+    edge(0, 3, 5),
+    edge(2, 4, 5),
+    edge(3, 5, 6),
+    edge(0, 1, 7),
+    edge(1, 4, 7),
+    edge(1, 2, 8),
+    edge(4, 5, 8),
+    edge(1, 3, 9),
+    edge(4, 6, 9),
+    edge(5, 6, 11),
+    edge(3, 4, 15),
+};
 
-fn initialize_answer() []uf.Edge {
-    var answer: [6]uf.Edge = undefined;
-    answer[0] = edge(0, 3, 5);
-    answer[1] = edge(2, 4, 5);
-    answer[2] = edge(3, 5, 6);
-    answer[3] = edge(0, 1, 7);
-    answer[4] = edge(1, 4, 7);
-    answer[5] = edge(4, 6, 9);
-    return &answer;
-}
+const answer = [6]uf.Edge{
+    edge(0, 3, 5),
+    edge(2, 4, 5),
+    edge(3, 5, 6),
+    edge(0, 1, 7),
+    edge(1, 4, 7),
+    edge(4, 6, 9),
+};
+
+// fn initialize_answer() []uf.Edge {
+//     var answer: [6]uf.Edge = undefined;
+//     answer[0] = edge(0, 3, 5);
+//     answer[1] = edge(2, 4, 5);
+//     answer[2] = edge(3, 5, 6);
+//     answer[3] = edge(0, 1, 7);
+//     answer[4] = edge(1, 4, 7);
+//     answer[5] = edge(4, 6, 9);
+//     return &answer;
+// }
 
 test "MST" {
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
 
-    var edges = initialize_edges();
-    var answer = initialize_answer();
-    sort.sort(uf.Edge, edges, {}, uf.Edge.ascend);
+    // var edges = initialize_edges();
+    // var answer = initialize_answer();
+    // sort.sort(uf.Edge, &edges, {}, uf.Edge.ascend);
 
-    const minST = try kruskal(edges, 6, arena.allocator());
+    const minST = try kruskal(&edges, 6, arena.allocator());
 
     try testing.expect(minST != null);
 
