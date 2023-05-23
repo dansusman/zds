@@ -49,18 +49,18 @@ inline fn edge(from: i32, to: i32, weight: i32) uf.Edge {
 //     return &edges;
 // }
 
-const edges = [11]uf.Edge{
-    edge(0, 3, 5),
-    edge(2, 4, 5),
-    edge(3, 5, 6),
+var edges = [11]uf.Edge{
     edge(0, 1, 7),
-    edge(1, 4, 7),
+    edge(0, 3, 5),
     edge(1, 2, 8),
-    edge(4, 5, 8),
+    edge(1, 4, 7),
     edge(1, 3, 9),
+    edge(2, 4, 5),
+    edge(3, 4, 15),
+    edge(3, 5, 6),
+    edge(4, 5, 8),
     edge(4, 6, 9),
     edge(5, 6, 11),
-    edge(3, 4, 15),
 };
 
 const answer = [6]uf.Edge{
@@ -89,7 +89,7 @@ test "MST" {
 
     // var edges = initialize_edges();
     // var answer = initialize_answer();
-    // sort.sort(uf.Edge, &edges, {}, uf.Edge.ascend);
+    sort.sort(uf.Edge, &edges, {}, uf.Edge.ascend);
 
     const minST = try kruskal(&edges, 6, arena.allocator());
 
